@@ -209,63 +209,6 @@ Publish the website in the given URL.
 </body>
 </html>
 
-views.py
- from django.shortcuts import render
-def gallery(request):
-    return render(request,"galery.html")
-
-def index(request):
-    result = None  # To store the calculation result
-    if request.method == 'POST':
-        try:
-            # Retrieve inputs from the POST request
-            voltage = float(request.POST.get('voltage'))
-            resistance = float(request.POST.get('resistance'))
-            
-            # Validate resistance to avoid division by zero
-            if resistance > 0:
-                result = (voltage ** 2) / resistance
-                
-                # Log inputs and outputs to the server console
-                print(f"Input received - Voltage: {voltage}V, Resistance: {resistance}Ω")
-                print(f"Calculated Power: {result}W")
-            else:
-                result = "Resistance must be greater than zero."
-                print("Error: Resistance must be greater than zero.")
-        except ValueError:
-            result = "Invalid input. Please enter numeric values."
-            print("Error: Invalid input. Non-numeric values entered.")
-    else:
-        print("GET request received; no calculation performed.")
-    
-    return render(request, 'index.html', {'result': result})
- urls.py
-"""
-URL configuration for lamp_power project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.contrib import admin
-from django.urls import path
-from myapp import views
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-   # path('glry/',views.gallery),
-    #path('', views.index, name='index'),
-    path('gallery/',views.gallery)
-]
 ```
 
 
