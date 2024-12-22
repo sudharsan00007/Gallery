@@ -1,7 +1,7 @@
 # Ex.08 Design of Interactive Image Gallery
 developed by SUDHARSAN.s
 24009664
-# Date:25/11/2024
+# Date:14/12/2024
 # AIM:
 To design a web application for an inteactive image gallery with minimum five images.
 
